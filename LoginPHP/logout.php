@@ -1,10 +1,13 @@
 
 <?php
-  session_start();
 
-  session_unset();
+// permite Salir
 
-  session_destroy();
+  session_start();//inica la sesion
+
+  session_unset();//Termina la sesion
+
+  session_destroy();//Destruye la sesion
 
   header('Location: /WikiA/LoginPHP');
 ?>

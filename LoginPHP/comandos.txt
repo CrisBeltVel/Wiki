@@ -1,0 +1,27 @@
+CUsersUSERDesktopU7 SemestreTecnologiasProyectoRepo Base de Tecnologias
+
+git init
+git commit -m "primer comit de prueba"
+git remote add origin https://github.com/CrisBeltVel/u1201945-unimilitar.edu.coRepo-Base-de-Tecnologias.git
+//copiar archivos en carpeta
+git add index.html
+git commit -m "primer comit de prueba: subi index.htm
+git push -u origin master
+git branch --list
+git checkout -b develop //crear rama
+git checkout master // cambia a master
+c
+git add -A
+git commit -m "commit 2 añado css e imagenes"
+git push -u origin develop
+git push --help
+
+pull traer la info al prinmcipio de emepzar a trabajar
+
+hacer muchos monits
+
+push mandar 
+
+
+
+git pull origin develop  

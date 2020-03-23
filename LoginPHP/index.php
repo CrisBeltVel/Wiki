@@ -1,21 +1,25 @@
 
 <?php
- session_start();
 
+//Inicio de la pagina
 
+//Inicio de sesion
+session_start();
+//Requerir conexión con la BD
 
   require 'database.php';
 
-  if (isset($_SESSION['user_id'])) {
+  if (isset($_SESSION['user_id'])) //si existe la variable user_id dentro de $_SESSION['']
+  {
     $records = $conn->prepare('SELECT id, email,nick, password FROM users WHERE id = :id');
     $records->bindParam(':id', $_SESSION['user_id']);
-    $records->execute();
-    $results = $records->fetch(PDO::FETCH_ASSOC);
+    $records->execute();//ejecuta la busqueda
+    $results = $records->fetch(PDO::FETCH_ASSOC); //alamcena todos los datos del user en results
 
     $user = null;
 
     if (count($results) > 0) {
-      $user = $results;
+      $user = $results; //Lleno la variable user con los resultados
     }
   }
 
@@ -35,7 +39,8 @@
 <body>
 
 
-<?php require 'partials/header.php' ?>
+<!-- Llama 3 lineas de codigo que permiten mostrar un enlace para ir a la pag principal -->
+<?php require 'partials/header.php' ?>  
 
 <?php if(!empty($user)): ?>
       <br> Welcome. <?= $user['nick']; ?>
@@ -46,10 +51,14 @@
     <?php else: ?>
 
 <h1>Please Login or SignUP</h1>
-
+<!-- Enlaces de Logeo y registro -->
 <a href="login.php">Login</a> or  <a href="signup.php">SignUp</a>
 
 <?php endif; ?>
 
 </body>
 </html>
+
+
+
+

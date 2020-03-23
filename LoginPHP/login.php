@@ -1,15 +1,18 @@
 <?php
+// permite registrarnos
 
-session_start();
+session_start(); //inicializar sesiones
 
 
 if (isset($_SESSION['user_id'])) {
     header('Location: /WikiA/LoginPHP');
   }
 
-  require 'database.php';
+  require 'database.php'; // Llama el arch database.php, encargado de la coneccion con la BD
 
+  //si el nick y la contraseña no estan vacios entonces
 if (!empty($_POST['nick']) && !empty($_POST['password'])) {
+  //con ayuda de conn(de datavase.php),ejecutamos la consulta de sql
     $records = $conn->prepare('SELECT id, nick, password FROM users WHERE nick = :nick'); //ejecutar la consulta a la tabla user
     $records->bindParam(':nick', $_POST['nick']); 
     $records->execute();
@@ -17,8 +20,8 @@ if (!empty($_POST['nick']) && !empty($_POST['password'])) {
 
     $message = '';
 
-    
-    if (count($results) > 0 ) {
+    //count me permite contar los resultados
+    if (count($results) > 0 && password_verify($_POST['password'], $results['password'])) {
         $_SESSION['user_id'] = $results['id'];
         header("Location: /WikiA/LoginPHP");
       } else {
@@ -36,9 +39,11 @@ if (!empty($_POST['nick']) && !empty($_POST['password'])) {
     <title>Login</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
 
+<!-- Llama 3 lineas de codigo que permiten mostrar un enlace para ir a la pag principal -->
 <?php require 'partials/header.php' ?>
 
 <?php if(!empty($message)): ?>
@@ -46,10 +51,11 @@ if (!empty($_POST['nick']) && !empty($_POST['password'])) {
     <?php endif; ?>
 
     <h1>Ingresa</h1>
-<form action="login.php" method="POST">
+      <form action="login.php" method="POST"> <!-- Envia los datos ingresados de login.php a login.php --> 
       <input name="nick" type="text" placeholder="Nick">
       <input name="password" type="password" placeholder="Contraseña">
-      <input type="submit" value="Login">
+      <div class="g-recaptcha" data-sitekey="6LeQI-MUAAAAAFKltkA1NUanWb-G9-zgQ8GSKHbC"></div>
+      <input type="submit" value="Login"><!-- Submit es un tipo de boton que permite ejecutar el formuladio/enviar la información -->
       <input type="submit" value="Iniciar sesión con Google">
 </form>
 
