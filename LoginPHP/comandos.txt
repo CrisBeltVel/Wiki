@@ -1,4 +1,5 @@
-wwCUsersUSERDesktopU7 SemestreTecnologiasProyectoRepo Base de Tecnologias
+
+//Comandos para subir repositorios
 
 git init
 git add -A

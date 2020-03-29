@@ -55,36 +55,7 @@ if ($validar > 0 ) {
  }
 
 
-                            
-//      for( $i = 0;$i<strlen($NewContra);$i++)
-//      {
-//        if($NewContra.charCodeAt(i) >= 65 && $NewContra.charCodeAt(i) <= 90)
-//        {
-//          $mayuscula = true;
-//        }
-//        else if($NewContra.charCodeAt(i) >= 97 && $NewContra.charCodeAt(i) <= 122)
-//        {
-//          $minuscula = true;
-//        }
-//        else if($NewContra.charCodeAt(i) >= 48 && $NewContra.charCodeAt(i) <= 57)
-//        {
-//          $numero = true;
-//        }
-//        else
-//        {
-//          $caracter_raro = true;
-//        }
-//      }
-//      if($mayuscula == true && $minuscula == true && $caracter_raro == true && $numero == false)
-//      {
-//        return true;
-//      }
-//    }
-//    return false;
-//  }
  
-
-
 
   if (!empty($_POST['email']) && !empty($_POST['nick']) && !empty($_POST['password'])&& !empty($_POST['confirm_password'])   )
    {
@@ -94,16 +65,13 @@ if ($validar > 0 ) {
     $secret ='6LeQI-MUAAAAAN5WheI4jm0jJimDaFC_hcQ5l7a6';
     $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$secret&response=$Captcha");
     $arr=json_decode($response,TRUE);
-    //
     
 
-$vNick   = verficacionNick($_POST['nick']);
-$vEmail  = verficacionEmail($_POST['email']);
-//$vContra = validar_contra($_POST['password']);
+    $vNick   = verficacionNick($_POST['nick']);
+    $vEmail  = verficacionEmail($_POST['email']);
 
-//
 
-    if ($_POST['password']== $_POST['confirm_password'] && $Captcha &&  $arr['success'] && $vNick==0 && $vEmail ==0)// && $vContra==true )
+    if ($_POST['password']== $_POST['confirm_password'] && $Captcha &&  $arr['success'] && $vNick==0 && $vEmail ==0)
       $validaciones=1;
       else if ($_POST['password']== $_POST['confirm_password'])
       $validaciones=2;
@@ -182,6 +150,7 @@ if ($validaciones==1)
     <title>Registro</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style2.css">
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script
      src="https://code.jquery.com/jquery-3.4.1.js"
@@ -214,16 +183,14 @@ if ($validaciones==1)
     <!-- Envia los datos ingresados de signup.php a signup.php, ademas de resivirlos datos -->
       <form action="signup.php" method="POST">
       <input name="email" type="text" placeholder="Ingresa tu correo" maxlength="50" required="required" >
-    
       <input name="nick" type="text" placeholder="Ingresa tu Nick" maxlength="15" required="required">
-      
       <input name="age" type="number" placeholder="Ingresa tu edad" min="14" max="100">
       <h3>Genero </h3>     
       <input type="radio" id="male" name="gender" value="male">
       <label for="male">M</label>
       <input type="radio" id="female" name="gender" value="female">
       <label for="female">F </label><br>
-      <input name="password" type="password" placeholder="Ingresa tu contraseña">
+      <input name="password" type="password" placeholder="Ingresa tu contraseña" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
       <input name="confirm_password" type="password" placeholder="Confirma tu contraseña">
       <div class="Cent_captcha g-recaptcha " data-sitekey="6LeQI-MUAAAAAFKltkA1NUanWb-G9-zgQ8GSKHbC"></div>
       <input type="submit" value="Restrarse">
