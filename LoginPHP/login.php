@@ -3,10 +3,12 @@
 
 session_start(); //inicializar sesiones
 
-
+//Revisar, NEN
 if (isset($_SESSION['user_id'])) {
     header('Location: /WikiA/LoginPHP');
   }
+//
+
 
   require 'database.php'; // Llama el arch database.php, encargado de la coneccion con la BD
 
@@ -19,10 +21,11 @@ if (!empty($_POST['nick']) && !empty($_POST['password'])) {
     $results = $records->fetch(PDO::FETCH_ASSOC);
 
     $message = '';
-
+    var_dump(count($results));
     //count me permite contar los resultados
     if (count($results) > 0 && password_verify($_POST['password'], $results['password'])) {
         $_SESSION['user_id'] = $results['id'];
+        
         header("Location: /WikiA/LoginPHP");
       } else {
         $message = 'Sorry, those credentials do not match';
@@ -43,7 +46,7 @@ if (!empty($_POST['nick']) && !empty($_POST['password'])) {
 </head>
 <body>
 
-<!-- Llama 3 lineas de codigo que permiten mostrar un enlace para ir a la pag principal -->
+<!-- Llama 3 lineas de codigo que permiten mostrar un enlace para ir a la pag principal (LOGO)-->
 <?php require 'partials/header.php' ?>
 
 <?php if(!empty($message)): ?>
@@ -54,7 +57,6 @@ if (!empty($_POST['nick']) && !empty($_POST['password'])) {
       <form action="login.php" method="POST"> <!-- Envia los datos ingresados de login.php a login.php --> 
       <input name="nick" type="text" placeholder="Nick">
       <input name="password" type="password" placeholder="Contraseña">
-      <div class="g-recaptcha" data-sitekey="6LeQI-MUAAAAAFKltkA1NUanWb-G9-zgQ8GSKHbC"></div>
       <input type="submit" value="Login"><!-- Submit es un tipo de boton que permite ejecutar el formuladio/enviar la información -->
       <input type="submit" value="Iniciar sesión con Google">
 </form>

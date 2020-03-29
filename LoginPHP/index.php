@@ -14,10 +14,14 @@ session_start();
     $records = $conn->prepare('SELECT id, email,nick, password FROM users WHERE id = :id');
     $records->bindParam(':id', $_SESSION['user_id']);
     $records->execute();//ejecuta la busqueda
-    $results = $records->fetch(PDO::FETCH_ASSOC); //alamcena todos los datos del user en results
+    $results = $records->fetch(PDO::FETCH_ASSOC); //almacena todos los datos del user en results
 
     $user = null;
 
+     var_dump($results);//borrar
+     
+     var_dump(count($results));
+        
     if (count($results) > 0) {
       $user = $results; //Lleno la variable user con los resultados
     }
@@ -35,12 +39,21 @@ session_start();
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
 
+
+
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="218346020250-gp4f05ehl0blphvpa7u002sgj6v1ri1v.apps.googleusercontent.com"  >
+
+    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+
+
+
 </head>
 <body>
 
 
-<!-- Llama 3 lineas de codigo que permiten mostrar un enlace para ir a la pag principal -->
-<?php require 'partials/header.php' ?>  
+<!-- Llama 3 lineas de codigo que permiten mostrar un enlace para ir a la pag principal (LOGO) -->
+<?php require 'partials/header.php' ?>   
 
 <?php if(!empty($user)): ?>
       <br> Welcome. <?= $user['nick']; ?>

@@ -1,7 +1,7 @@
-CUsersUSERDesktopU7 SemestreTecnologiasProyectoRepo Base de Tecnologias
+wwCUsersUSERDesktopU7 SemestreTecnologiasProyectoRepo Base de Tecnologias
 
 git init
-git commit -m "primer comit de prueba"
+git add -A
 git remote add origin https://github.com/CrisBeltVel/u1201945-unimilitar.edu.coRepo-Base-de-Tecnologias.git
 //copiar archivos en carpeta
 git add index.html

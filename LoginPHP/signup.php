@@ -2,30 +2,113 @@
   require 'database.php'; // LLama el codigo que conecta con la base de datos
   $message ='';
   $message2 ='';
+  $message3 ='';
+
+  session_start();
+
+ function verficacionNick($NewNick)
+ {
+  require 'database.php';
+   //Valida unicamente el nick
+   //con ayuda de conn(de datavase.php),ejecutamos la consulta de sql
+$records = $conn->prepare('SELECT nick  FROM users WHERE nick = :nick '); //ejecutar la consulta a la tabla user
+$records->bindParam(':nick', $NewNick); 
+$records->execute();
+$results = $records->fetch(PDO::FETCH_ASSOC);
+//var_dump($results);
+
+if ($results== false)
+$validar=0;
+else 
+$validar=count($results);
+
+//var_dump($vp);
+if ($validar > 0 ) {
+   return 1;
+  }else
+  return 0;
+ }
 
 
-  
+
+ function verficacionEmail($NewEmail)
+ {
+  require 'database.php';
+   //Valida unicamente el nick
+   //con ayuda de conn(de datavase.php),ejecutamos la consulta de sql
+$records = $conn->prepare('SELECT email  FROM users WHERE email = :email '); //ejecutar la consulta a la tabla user
+$records->bindParam(':email', $NewEmail); 
+$records->execute();
+$results = $records->fetch(PDO::FETCH_ASSOC);
+//var_dump($results);
+
+if ($results== false)
+$validar=0;
+else 
+$validar=count($results);
+
+//var_dump($vp);
+if ($validar > 0 ) {
+   return 1;
+  }else
+  return 0;
+ }
+
+
+                            
+//      for( $i = 0;$i<strlen($NewContra);$i++)
+//      {
+//        if($NewContra.charCodeAt(i) >= 65 && $NewContra.charCodeAt(i) <= 90)
+//        {
+//          $mayuscula = true;
+//        }
+//        else if($NewContra.charCodeAt(i) >= 97 && $NewContra.charCodeAt(i) <= 122)
+//        {
+//          $minuscula = true;
+//        }
+//        else if($NewContra.charCodeAt(i) >= 48 && $NewContra.charCodeAt(i) <= 57)
+//        {
+//          $numero = true;
+//        }
+//        else
+//        {
+//          $caracter_raro = true;
+//        }
+//      }
+//      if($mayuscula == true && $minuscula == true && $caracter_raro == true && $numero == false)
+//      {
+//        return true;
+//      }
+//    }
+//    return false;
+//  }
+ 
+
+
 
   if (!empty($_POST['email']) && !empty($_POST['nick']) && !empty($_POST['password'])&& !empty($_POST['confirm_password'])   )
    {
 
+    //Recaptcha
     $Captcha=$_POST['g-recaptcha-response'];
     $secret ='6LeQI-MUAAAAAN5WheI4jm0jJimDaFC_hcQ5l7a6';
-    //
     $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$secret&response=$Captcha");
-   // var_dump($response);
     $arr=json_decode($response,TRUE);
+    //
+    
+
+$vNick   = verficacionNick($_POST['nick']);
+$vEmail  = verficacionEmail($_POST['email']);
+//$vContra = validar_contra($_POST['password']);
 
 //
 
-    if ($_POST['password']== $_POST['confirm_password'] && $Captcha &&  $arr['success'])
+    if ($_POST['password']== $_POST['confirm_password'] && $Captcha &&  $arr['success'] && $vNick==0 && $vEmail ==0)// && $vContra==true )
       $validaciones=1;
       else if ($_POST['password']== $_POST['confirm_password'])
       $validaciones=2;
       else 
       $validaciones=3;
-
-
 
        if(filter_var($_POST['email'],FILTER_VALIDATE_EMAIL ))
        {
@@ -33,27 +116,11 @@
        }else 
        $validaciones=4;
 
-      //  function buscarRepetido($email,$user)
-      //  {
-      //    $sqlnick = "SELECT nick from users where nick='$user' ";
-       
-      //   if(mysqli_num_rows($sqlnick) == 0)
-      //     return 0;
-      //   else 
-      //     return 1;
-        
-      // }
-      
-
-      //  if(!buscarRepetido($_POST['email'],$_POST['nick']))
-      //  {
-      //    $validaciones=5;
-      //  }
 
 
-    
 
-      
+
+
 
 
 if ($validaciones==1)
@@ -71,6 +138,7 @@ if ($validaciones==1)
     
     if ($stmt->execute()) {
       $message = 'Successfully created new user';
+    //  header("Location: /WikiA/LoginPHP/login.php");
     } else {
       $message = 'Sorry there must have been an issue creating your account';
     }
@@ -78,11 +146,18 @@ if ($validaciones==1)
      $message = 'Verificar Captcha';
   else if ($validaciones==3)
      $message = 'La contraseña no coincide';
-else 
+   else
      $message = 'Ingrese un correo valido';
 
-  
-
+  if($vNick!=0)
+  $message3 = 'Lo sentimos nick ya existe';
+   
+ if($vEmail!=0)
+  $message3 = 'Lo sentimos el correo ya tiene una cuenta';
+   
+  // if(!$vContra)
+  // $message3 = 'Lo sentimos la contraseña debe tener una Mayuscula, una minuscula, 1 numero y tener por lo menos 8 caracteres';
+   
 
     
 
@@ -108,6 +183,17 @@ else
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script
+     src="https://code.jquery.com/jquery-3.4.1.js"
+     integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+     crossorigin="anonymous">
+     </script>
+
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="218346020250-f131mlbj5vmj9ea22u368qjpd77cb86q.apps.googleusercontent.com"  >
+                                                 
+                                                   
+
 </head>
 <body>
 <!-- Llama 3 lineas de codigo que permiten mostrar un enlace para ir a la pag principal -->
@@ -116,27 +202,51 @@ else
   <?php if(!empty($message)): ?>
       <p> <?= $message ?></p>
       <p> <?= $message2 ?></p>
+      <p> <?= $message3 ?></p>
+
     <?php endif; ?>
+
+
+
 
 <h1>Registrate</h1>
     <span>Have account? <a href="login.php">Login</a></span>
     <!-- Envia los datos ingresados de signup.php a signup.php, ademas de resivirlos datos -->
       <form action="signup.php" method="POST">
-      <input name="email" type="text" placeholder="Ingresa tu correo">
-      <input name="nick" type="text" placeholder="Ingresa tu Nick">
-      <input name="password" type="password" placeholder="Ingresa tu contraseña">
-      <input name="confirm_password" type="password" placeholder="Confirma tu contraseña">
+      <input name="email" type="text" placeholder="Ingresa tu correo" maxlength="50" required="required" >
+    
+      <input name="nick" type="text" placeholder="Ingresa tu Nick" maxlength="15" required="required">
+      
       <input name="age" type="number" placeholder="Ingresa tu edad" min="14" max="100">
       <h3>Genero </h3>     
       <input type="radio" id="male" name="gender" value="male">
       <label for="male">M</label>
       <input type="radio" id="female" name="gender" value="female">
       <label for="female">F </label><br>
+      <input name="password" type="password" placeholder="Ingresa tu contraseña">
+      <input name="confirm_password" type="password" placeholder="Confirma tu contraseña">
       <div class="Cent_captcha g-recaptcha " data-sitekey="6LeQI-MUAAAAAFKltkA1NUanWb-G9-zgQ8GSKHbC"></div>
       <input type="submit" value="Restrarse">
+      <div class="g-signin2" data-onsuccess="onSignIn"></div>
 
+   
     </form>
 
     
 </body>
+
+
+
+<script>
+function onSignIn(googleUser)
+{
+
+var profile =googleUser.getBasicProfile();
+   console.log('User is '+ JSON.stringify(profile))
+     var element = document.querySelector('#content')
+ //  element.innerText = profile.getName();
+
+}
+</script>
+
 </html>
