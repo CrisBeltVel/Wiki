@@ -53,20 +53,6 @@ session_start();
 <!-- require e include parecen hacer lo mismo. Se llama al archivo “header.php”, ubicado en la carpeta partials, este es todo el header del html, se usara también en las demás ventanas de la wiki -->
 <?php  include 'partials/header.php' ?>  
 <!-- el "!empty" hace lo mismo que el isset, en este caso, se valida que la variable "$user" creada arriba no este vacia, es decir que haya un usuario validado por la BD  -->
-<?php if(!empty($user)): ?>
-      <br> Welcome. <?= $user['nick']; ?>
-      <br>You are Successfully Logged In
-       <a href="logout.php">  <!--llama el archivo de php que permite cerrar la sesion  -->
-        Logout
-      </a>
-    <?php else: ?>
-
-<h1>Please Login or SignUP</h1>
-<!-- Enlaces de Logeo y registro -->
-<a href="login.php">Login</a> or  <a href="signup.php">SignUp</a>
-
-<?php endif; ?>
-
 
 
 

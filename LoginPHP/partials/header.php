@@ -27,9 +27,26 @@
 						<li><a href="">Artes computacionales</a></li>
 						<li><a href="">Expresion Grafica</a></li>
 					</ul>
+
 				</li>        
+  <?php if(empty($user)): ?>
 				<li><a href="login.php">Iniciar Sesion</a></li>
 				<li><a href="signup.php">Registro</a></li>
+<?php else: ?>
+
+				<li><a href="">Hola <?= $user['nick']; ?>  ▼</a>
+					<ul class="dropdown">
+						<li><a href="">Mis Articulos</a></li>
+						<li><a href="logout.php"> Cerrar sesion</a></li> <!--llama el archivo de php que permite cerrar la sesion  -->
+					</ul>	
+				</li>
+<?php endif; ?>
 			</ul>
 		</nav>		
 	</header>
+
+
+
+
+
+	
