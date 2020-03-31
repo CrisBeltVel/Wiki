@@ -48,9 +48,10 @@ var_dump($validar);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
     <link rel="stylesheet" type="text/css" href="assets/css/style2.css">
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <link rel="stylesheet" href="assets/css/estiloregistro.css">
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -61,15 +62,31 @@ var_dump($validar);
       <p> <?= $message ?></p>
     <?php endif; ?>
 
-    <h1>Ingresa</h1>
-      <form action="login.php" method="POST"> <!-- Envia los datos ingresados de login.php a login.php --> 
-      <input name="nick" type="text" placeholder="Nick">
-      <input name="password" type="password" placeholder="Contraseña"   >
-      <input type="submit" value="Login"><!-- Submit es un tipo de boton que permite ejecutar el formuladio/enviar la información -->
-      <input type="submit" value="Iniciar sesión con Google">
-</form>
+   
 
-<span>Don't have account? <a href="signup.php">REGISTER HERE</a></span>
+
+    <div class="form_env">
+        <img src="images/logo.png" alt="">
+        <h2>Iniciar Sesion</h1>
+        <form class="register" action="login.php" method="POST"> <!-- Envia los datos ingresados de login.php a login.php --> 
+            <input name="nick" type="text" placeholder="Nick">
+            <input name="password" type="password" placeholder="Contraseña" >
+            <input type="submit" value="Login">
+            <input type="submit" value="Iniciar sesión con Google">
+        </form>
+        <span>¿No tienes una cuenta?</span>
+        <a href="signup.php"> REGISTRATE AQUI</a>
+        <span>¿Olvidaste la contraseña? Create otra cuenta!! <a href="Recuperar.php">RECUPERAR</a></span>
+    </div>
+
+    <footer>
+        <div class="containerfooter">
+            <div class="blockfooter"><p>Creado en la Universidad Militar</p></div>
+            <div class="blockfooter"><p>Contactanos al 781213213</p></div>
+        </div>
+    </footer>
+
+
 
 </body>
 </html>

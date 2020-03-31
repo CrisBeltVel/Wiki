@@ -74,7 +74,7 @@ header {
     width: 5rem;
 }
 
-input {
+.auxnavleft>input {
     width: 25rem;
     box-sizing: border-box;
     border: 2px solid #ccc;
@@ -89,11 +89,11 @@ input {
     transition: width 0.4s ease-in-out;
 }
 
-input::placeholder {
+.auxnavleft>input::placeholder {
     color: #00d6d6;
 }
 
-input:focus {
+.auxnavleft>input:focus {
     background-color: rgb(240, 240, 240, 1);
     width: 38rem;
 }
@@ -429,10 +429,10 @@ footer {
     ul li:hover .dropdown {
         display: none;
     }
-    input {
+    .auxnavleft>input {
         width: 50%;
     }
-    input:focus {
+    .auxnavleft>input:focus {
         width: 80%;
     }
     /*Imagen principal*/

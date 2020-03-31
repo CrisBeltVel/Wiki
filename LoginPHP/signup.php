@@ -139,18 +139,12 @@ if ($validaciones==1)
 
 ?>
 
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro</title>
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/style2.css">
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script
      src="https://code.jquery.com/jquery-3.4.1.js"
@@ -160,7 +154,14 @@ if ($validaciones==1)
 
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <meta name="google-signin-client_id" content="218346020250-f131mlbj5vmj9ea22u368qjpd77cb86q.apps.googleusercontent.com"  >
-                                                 
+
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round&display=swap" rel="stylesheet">
+        <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
+    <link rel="stylesheet" type="text/css" href="assets/css/style2.css">
+    <link rel="stylesheet" href="assets/css/estiloregistro.css"> 
+                                      
                                                    
 
 </head>
@@ -168,37 +169,38 @@ if ($validaciones==1)
 <!-- Llama 3 lineas de codigo que permiten mostrar un enlace para ir a la pag principal -->
 <?php require 'partials/header.php' ?>
 
-  <?php if(!empty($message)): ?>
+    <div class="form_env">
+        <img src="images/logo.png" alt="">
+        <h2>Registrate</h1>
+         <span>Have account? <a href="login.php">Login</a></span>
+         <form class="register" action="signup.php" method="POST">
+                <input name="email" type="text" placeholder="Ingresa tu correo" maxlength="50" required="required" >
+                <input name="nick" type="text" placeholder="Ingresa tu Nick" maxlength="15" required="required">
+                <input name="age" type="number" placeholder="Ingresa tu edad" min="14" max="100">
+                <h2>Género </h2>
+                <div class="options">
+                    <input type="radio" id="male" name="gender" value="male">
+                    <label for="male">M</label>
+                    <input type="radio" id="female" name="gender" value="female">
+                    <label for="female">F </label><br>                    
+                </div>     
+                <input name="password" type="password" placeholder="Ingresa tu contraseña" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
+                <input name="confirm_password" type="password" placeholder="Confirma tu contraseña">
+               <div class="options"> <div class="Cent_captcha g-recaptcha " data-sitekey="6LeQI-MUAAAAAFKltkA1NUanWb-G9-zgQ8GSKHbC"></div></div>
+                <input type="submit" value="Registrarse">
+                
+
+         </form>
+         <div class="g-signin2" data-onsuccess="onSignIn"></div>
+
+         <?php if(!empty($message)): ?>
       <p> <?= $message ?></p>
-      <p> <?= $message2 ?></p>
       <p> <?= $message3 ?></p>
-
     <?php endif; ?>
-
-
-
-
-<h1>Registrate</h1>
-    <span>Have account? <a href="login.php">Login</a></span>
-    <!-- Envia los datos ingresados de signup.php a signup.php, ademas de resivirlos datos -->
-      <form action="signup.php" method="POST">
-      <input name="email" type="text" placeholder="Ingresa tu correo" maxlength="50" required="required" >
-      <input name="nick" type="text" placeholder="Ingresa tu Nick" maxlength="15" required="required">
-      <input name="age" type="number" placeholder="Ingresa tu edad" min="14" max="100">
-      <h3>Genero </h3>     
-      <input type="radio" id="male" name="gender" value="male">
-      <label for="male">M</label>
-      <input type="radio" id="female" name="gender" value="female">
-      <label for="female">F </label><br>
-      <input name="password" type="password" placeholder="Ingresa tu contraseña" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
-      <input name="confirm_password" type="password" placeholder="Confirma tu contraseña">
-      <div class="Cent_captcha g-recaptcha " data-sitekey="6LeQI-MUAAAAAFKltkA1NUanWb-G9-zgQ8GSKHbC"></div>
-      <input type="submit" value="Restrarse">
-      <div class="g-signin2" data-onsuccess="onSignIn"></div>
+    
+    </div>
 
    
-    </form>
-
     
 </body>
 
