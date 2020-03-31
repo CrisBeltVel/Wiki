@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Base Login</title>
+    <link rel="stylesheet" type="text/css" href="style2.css">
+    <link rel="stylesheet" href="estiloregistro.css">
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round&display=swap" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+</head>
+
+<body>
+<!-- Navbar -->
+    <header class="horizontalspace">
+        <div class="auxnavleft">
+            <!-- Logo -->
+            <div class="auxresponsive">
+                <img src="images/logo.png" class="imglogo">
+                <a href="" onclick="showburger(); return false; "  class="burgermenu">
+                    <img src="images/menu.png" >
+                </a>
+            </div>
+            <!-- Buscador -->
+            <input id="buscador" type="text" name="" placeholder="Busca algun articulo">
+        </div>
+        <nav id="menunavegacion">
+            <ul>
+                <li><a href="">Categorias</a>
+                    <ul class="dropdown">
+                        <li><a href="">Ciencias de la computacion</a></li>
+                        <li><a href="">Diseño</a></li>
+                        <li><a href="">Animacion y cine</a></li>
+                        <li><a href="">Procesamiento de datos</a></li>
+                        <li><a href="">Artes computacionales</a></li>
+                        <li><a href="">Expresion Grafica</a></li>
+                    </ul>
+                </li>
+                <li><a href="">Hola"Usuario"  ▼</a>
+                    <ul class="dropdown">
+                        <li><a href="">Mis Articulos</a></li>
+                        <li><a href="">Cerrar sesion</a></li>
+                    </ul>   
+                </li>
+<!--                <li><a href="">Iniciar Sesion</a></li>
+                <li><a href="">Registro</a></li> -->
+            </ul>
+        </nav>      
+    </header>
+
+    <div class="form_env">
+        <img src="images/logo.png" alt="">
+        <h2>Registrate</h1>
+         <span>Have account? <a href="login.php">Login</a></span>
+         <form class="register">
+                <input name="email" type="text" placeholder="Ingresa tu correo" maxlength="50" required="required" >
+                <input name="nick" type="text" placeholder="Ingresa tu Nick" maxlength="15" required="required">
+                <input name="age" type="number" placeholder="Ingresa tu edad" min="14" max="100">
+                <h2>Género </h2>
+                <div class="options">
+                    <input type="radio" id="male" name="gender" value="male">
+                    <label for="male">M</label>
+                    <input type="radio" id="female" name="gender" value="female">
+                    <label for="female">F </label><br>                    
+                </div>     
+                <input name="password" type="password" placeholder="Ingresa tu contraseña" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
+                <input name="confirm_password" type="password" placeholder="Confirma tu contraseña">
+                <div class="Cent_captcha g-recaptcha " data-sitekey="6LeQI-MUAAAAAFKltkA1NUanWb-G9-zgQ8GSKHbC"></div>
+                <input type="submit" value="Registrarse">
+                <div class="g-signin2" data-onsuccess="onSignIn"></div>
+
+         </form>
+    </div>
+
+    <footer>
+        <div class="containerfooter">
+            <div class="blockfooter"><p>Creado en la Universidad Militar</p></div>
+            <div class="blockfooter"><p>Contactanos al 781213213</p></div>
+        </div>
+    </footer>
+    
+    <script type="text/javascript" src="openandclose.js"></script>
+</body>
+</html>

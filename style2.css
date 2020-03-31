@@ -74,7 +74,7 @@ header
 	width: 5rem;
 }
 
-input{
+.auxnavleft >input{
   width: 25rem;
   box-sizing: border-box;
   border: 2px solid #ccc;
@@ -90,12 +90,12 @@ input{
   
 }
 
-input::placeholder
+.auxnavleft >input::placeholder
 {
 	color: #00d6d6;
 }
 
-input:focus {
+.auxnavleft >	input:focus {
    background-color: rgb(240,240,240,1);
    width: 38rem;
 }
@@ -453,10 +453,10 @@ header ul li
   {
 	display: none;
   }
-  input{
+  .auxnavleft >input{
   	width: 50%;
   }
-  input:focus{
+  .auxnavleft >input:focus{
   	width: 80%;
   }
 

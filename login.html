@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Base Sing Up</title>
+    <link rel="stylesheet" type="text/css" href="style2.css">
+    <link rel="stylesheet" href="estiloregistro.css">
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round&display=swap" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+</head>
+<body>
+<!-- Navbar -->
+    <header class="horizontalspace">
+        <div class="auxnavleft">
+            <!-- Logo -->
+            <div class="auxresponsive">
+                <img src="images/logo.png" class="imglogo">
+                <a href="" onclick="showburger(); return false; "  class="burgermenu">
+                    <img src="images/menu.png" >
+                </a>
+            </div>
+            <!-- Buscador -->
+            <input id="buscador" type="text" name="" placeholder="Busca algun articulo">
+        </div>
+        <nav id="menunavegacion">
+            <ul>
+                <li><a href="">Categorias</a>
+                    <ul class="dropdown">
+                        <li><a href="">Ciencias de la computacion</a></li>
+                        <li><a href="">Diseño</a></li>
+                        <li><a href="">Animacion y cine</a></li>
+                        <li><a href="">Procesamiento de datos</a></li>
+                        <li><a href="">Artes computacionales</a></li>
+                        <li><a href="">Expresion Grafica</a></li>
+                    </ul>
+                </li>
+                <li><a href="">Hola"Usuario"  ▼</a>
+                    <ul class="dropdown">
+                        <li><a href="">Mis Articulos</a></li>
+                        <li><a href="">Cerrar sesion</a></li>
+                    </ul>   
+                </li>
+<!--                <li><a href="">Iniciar Sesion</a></li>
+                <li><a href="">Registro</a></li> -->
+            </ul>
+        </nav>      
+    </header>
+
+
+     <div class="form_env">
+        <img src="images/logo.png" alt="">
+        <h2>Iniciar Sesion</h1>
+        <form class="register">
+            <input name="nick" type="text" placeholder="Nick">
+            <input name="password" type="password" placeholder="Contraseña" >
+            <input type="submit" value="Login">
+            <input type="submit" value="Iniciar sesión con Google">
+        </form>
+        <span>¿No tienes una cuenta?</span>
+        <a href="signup.php"> REGISTRATE AQUI</a>
+    </div>
+
+    <footer>
+        <div class="containerfooter">
+            <div class="blockfooter"><p>Creado en la Universidad Militar</p></div>
+            <div class="blockfooter"><p>Contactanos al 781213213</p></div>
+        </div>
+    </footer>
+</body>

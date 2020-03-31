@@ -1,0 +1,140 @@
+*{
+    padding: 0;
+    margin:0;
+    box-sizing: border-box;
+}
+
+body{
+    background-image: url(images/fondologin.png);
+}
+h3,h2,h1{
+    text-align: center;
+}
+/*Configuraciones generales*/
+span
+{
+    font-family: "Roboto";
+}
+
+/*Configuraciones recuadro blanco del form*/
+.form_env{
+    display: flex;
+    margin:0 auto;
+    width: 30vw;
+    padding: 22px;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    background-color: white;
+    box-shadow: 0 15px 20px rgba(0, 0, 0,0.2);
+    flex-direction: column;
+    align-items: center;
+}
+
+.form_env img
+{
+    width: 80px;
+    height: 56px;
+    object-fit: contain;
+}
+.form_env *{
+    font-size: 1.5rem;
+}
+
+.form_env >h2{
+    font-size: 2.5rem;
+    margin-top:1.5rem;
+}
+
+.options
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.options label,.options input
+{
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+
+form{
+    display: block;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+
+
+/*Configuraciones de la imagen de fondo*/
+
+/*Configuraciones de los recuadros y botones del form*/
+.register >input
+{
+    outline: none;
+    padding: 20px;
+    display: block;
+    width: 80%;
+    border-radius: 3px;
+    border: 1px solid #eee;
+    margin: 20px auto;
+}
+.register >input[type="submit"] {
+
+    background: #7d49b1;
+    color: white;
+    padding: 10px;
+}
+
+.register >input[type="submit"]:hover {
+    background-color: #7018c7;
+}
+
+@media (max-width: 1100px){
+
+    .form_env{
+        width: 50vw;
+    }
+  
+}
+
+
+@media (max-width: 680px){
+
+    .form_env{
+        width: 80vw;
+    }
+  
+}
+
+@media (max-width: 500px){
+
+    .form_env{
+        width: 90vw;
+    }
+  
+}
+/*Configuracion Responsive del Login*/
+/*@media (max-width: 768px){
+
+    #App .bg-landscape{
+        height:150%;
+    }
+  
+}
+@media (max-width: 1024px){
+
+    #App .bg-landscape{
+        height:160%;
+    }
+  
+}
+@media (max-width: 1440px){
+
+    #App .bg-landscape{
+        height:165%;
+    }
+  
+}*/
