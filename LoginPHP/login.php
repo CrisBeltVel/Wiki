@@ -52,18 +52,43 @@ var_dump($validar);
     <link rel="stylesheet" type="text/css" href="assets/css/style2.css">
     <link rel="stylesheet" href="assets/css/estiloregistro.css">
     <link href="https://fonts.googleapis.com/css?family=Varela+Round&display=swap" rel="stylesheet">
+<!-- 
+/// -->
+
+
+    <script>
+		function quitar(){
+
+			document.getElementById("negro").style.display="none";
+			document.getElementById("dialogo").style.display="none";
+		}
+     </script>
+
 </head>
 <body>
 
 <!-- Llama 3 lineas de codigo que permiten mostrar un enlace para ir a la pag principal (LOGO)-->
 <?php require 'partials/header.php' ?>
 
-<?php if(!empty($message)): ?>
-      <p> <?= $message ?></p>
-    <?php endif; ?>
+<?php 
+
+      if(isset($validar) ){
+
+        if($validar == 0){
+          echo "
+          <div onclick='quitar()' id='negro'>
+          </div>
+  
+          <div id='dialogo'>
+            <p>Los datos no estan registrados en el sistema.</p>
+          </div>";
+        }
+
+      
+}
+   ?>
 
    
-
 
     <div class="form_env">
         <img src="images/logo.png" alt="">
@@ -76,7 +101,7 @@ var_dump($validar);
         </form>
         <span>¿No tienes una cuenta?</span>
         <a href="signup.php"> REGISTRATE AQUI</a>
-        <span>¿Olvidaste la contraseña? Create otra cuenta!! <a href="Recuperar.php">RECUPERAR</a></span>
+        <span>¿Olvidaste la contraseña? Create otra cuenta!! <a href="recoverPass.php">RECUPERAR</a></span>
     </div>
 
     <footer>

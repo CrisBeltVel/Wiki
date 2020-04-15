@@ -16,7 +16,7 @@
 			<!-- Buscador -->
 			<input id="buscador" type="text" name="" placeholder="Busca algun articulo">
 		</div>
-		<nav id="menunavegacion">
+		<nav id="menunavegacion"> <!--esta clase no exite-->
 			<ul>
 				<li><a href="">Categorias</a>
 					<ul class="dropdown">
@@ -36,7 +36,7 @@
 
 				<li><a href="">Hola <?= $user['nick']; ?>  ▼</a>
 					<ul class="dropdown">
-						<li><a href="">Mis Articulos</a></li>
+						<li><a href="my_articles.php">Mis Articulos</a></li>
 						<li><a href="logout.php"> Cerrar sesion</a></li> <!--llama el archivo de php que permite cerrar la sesion  -->
 					</ul>	
 				</li>

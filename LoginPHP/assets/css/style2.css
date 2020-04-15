@@ -475,3 +475,55 @@ footer {
     font-size: 14px;
   }
 }*/
+
+div#negro {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(10, 19, 26, 0.5);
+}
+
+div#dialogo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -150px;
+    margin-top: -200px;
+    width: 300px;
+    height: 135px;
+    background-color: white;
+    border-radius: 30px;
+    border: 1px solid #00a7ff;
+    font-family: "Poppins", sans-serif;
+}
+
+div#dialogo p {
+    padding: 10px;
+    padding-top: 20px;
+    font-size: 2em;
+    text-align: center;
+}
+
+
+/* Nuevos */
+
+.espacioindexedit {
+    display: block;
+}
+
+.cuadrarAncho {
+    /* padding-left: 26%;
+    padding-right: 9%; */
+}
+
+.tamLetra {
+    font-size: 3rem;
+}
+
+
+/* Particles */
+
+#particles-js {
+    height: 100vh;
+    background-position: center;
+}
