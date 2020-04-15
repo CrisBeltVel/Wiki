@@ -4,6 +4,9 @@
   $message2 ='';
   $message3 ='';
 
+  date_default_timezone_set("America/Bogota"); 
+  $dateRegister= date('Y-m-d H:i:s');
+ //var_dump($dateRegister);
   session_start();
 
  function verficacionNick($NewNick)
@@ -71,18 +74,17 @@ if ($validar > 0 ) {
     $vEmail  = verficacionEmail($_POST['email']);
 
 
-    if ($_POST['password']== $_POST['confirm_password'] && $Captcha &&  $arr['success'] && $vNick==0 && $vEmail ==0)
+    if (   filter_var($_POST['email'],FILTER_VALIDATE_EMAIL ) && $_POST['password'] == $_POST['confirm_password'] && $Captcha &&  $arr['success'] && $vNick==0 && $vEmail ==0)
       $validaciones=1;
       else if ($_POST['password']== $_POST['confirm_password'])
       $validaciones=2;
       else 
       $validaciones=3;
 
-       if(filter_var($_POST['email'],FILTER_VALIDATE_EMAIL ))
+       if(!filter_var($_POST['email'],FILTER_VALIDATE_EMAIL ))
        {
-         $validaciones=1;
-       }else 
-       $validaciones=4;
+         $validaciones=4;
+       }
 
 
 
@@ -93,13 +95,14 @@ if ($validar > 0 ) {
 
 if ($validaciones==1)
 {
-    $sql = "INSERT INTO users (email, nick,password, age, gender) VALUES (:email, :nick,:password, :age, :gender)";
+    $sql = "INSERT INTO users (email, nick,password, age, gender, dateLogin) VALUES (:email, :nick,:password, :age, :gender, :dateLogin)";
     $stmt = $conn->prepare($sql); //variable cualquiera que por medio de conn adquirido de database.php, hace una consulta  con prepare un metosdo ya definido
 
     $stmt->bindParam(':email', $_POST['email']); //bincula los parametros y los parametors: con bindParam()
     $stmt->bindParam(':nick', $_POST['nick']);
     $stmt->bindParam(':age', $_POST['age']);
     $stmt->bindParam(':gender', $_POST['gender']);
+    $stmt->bindParam(':dateLogin', $dateRegister);
 
     $password = password_hash($_POST['password'], PASSWORD_BCRYPT);//cifrado de contraseña por medio de PASSWORD_BCRYPT, guarda la contrañada cifrada y no la ingresada
     $stmt->bindParam(':password', $password);
@@ -199,7 +202,12 @@ if ($validaciones==1)
     <?php endif; ?>
     
     </div>
-
+    <footer>
+        <div class="containerfooter">
+            <div class="blockfooter"><p>Creado en la Universidad Militar</p></div>
+            <div class="blockfooter"><p>Contactanos al 781213213</p></div>
+        </div>
+    </footer>
    
     
 </body>

@@ -3,9 +3,14 @@
 
 //Inicio de sesion, toma la sesión de el usuario logeado en caso de estarlo
 session_start();
-
+ 
 //Requerir conexión con la BD
   require 'database.php';
+
+//php mailer 
+
+//  require 'vendor/autoload.php';
+
 
   if (isset($_SESSION['user_id'])) //Isset valida si existe la variable user_id dentro de $_SESSION[''], la sesión que se estableció con  "session_start()"
   {
@@ -49,11 +54,11 @@ session_start();
     <link rel="stylesheet" type="text/css" href="assets/css/style2.css"> 
 
 </head>
-<body>
+<body >
 <!-- require e include parecen hacer lo mismo. Se llama al archivo “header.php”, ubicado en la carpeta partials, este es todo el header del html, se usara también en las demás ventanas de la wiki -->
 <?php  include 'partials/header.php' ?>  
 <!-- el "!empty" hace lo mismo que el isset, en este caso, se valida que la variable "$user" creada arriba no este vacia, es decir que haya un usuario validado por la BD  -->
-
+   <div id="particles-js">
 
 
   <div class="auximgpriciple allcenter">
@@ -65,7 +70,8 @@ session_start();
 		</div>
 	</div>
 
-	<div class="container">
+    
+	<div class="container ">
 		<div class="horizontalspace noticias">
 			<div class="articulo">
 				<h2>INTERACCION CON DISPOSITIVOS</h2>
@@ -116,8 +122,9 @@ session_start();
 	</footer>
 	
 	<script type="text/javascript" src="openandclose.js"></script>
-  
-
+  <script src="particles.js"></script>
+    <script src="app.js"></script>
+	</div>
 </body>
 </html>
 

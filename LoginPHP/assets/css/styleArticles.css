@@ -1,0 +1,35 @@
+.menu_lateral {
+    width: 13%;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+}
+
+.div_menu {
+    padding: 3rem;
+}
+
+.columna {
+    width: 33%;
+    float: left;
+}
+
+@media (max-width: 500px) {
+    .columna {
+        width: auto;
+        float: none;
+    }
+}
+
+.listas {
+    height: 30%;
+}
+
+.barra_superior {
+    height: 20rem;
+    padding: 9rem;
+}
+
+.fullrow {
+    width: 100%;
+}
